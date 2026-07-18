@@ -405,6 +405,7 @@ object Devonian : ClientModInitializer {
             EquipmentKeybinds,
             SpiritBearHighlight,
             SpiritBowHighlight,
+            SpiritKillCounter,
 
             // Debug
             CopyItem,
