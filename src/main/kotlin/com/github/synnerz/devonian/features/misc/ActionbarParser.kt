@@ -120,8 +120,30 @@ object ActionbarParser : Feature(
             override fun modifyStringHud(str: String): String
                 = str.replace("\uE010", "❤")
         },
+        Vitality(
+            null,
+            listOf("\uE028"),
+            object : TextHudFeature(
+                "customVitalitythHud",
+                "$desc Allows you to move the vitality that appears in the actionbar (above your hotbar).",
+                Categories.Actionbar,
+                searchTags = customTags,
+            ) {
+                override fun getEditText(): List<String> = listOf("§4126/126♨")
+            },
+            object : Feature(
+                "hideVitalityActionbar",
+                "$desc Hides the vitality that appears in the actionbar (above your hotbar).",
+                Categories.Actionbar,
+                searchTags = hideTags,
+            ) {},
+            "",
+        ) {
+            override fun modifyStringHud(str: String): String
+                = str.replace("\uE028", "♨")
+        },
         Defense(
-            "\uE008 Defense",
+            "\uE008",
             null,
             object : TextHudFeature(
                 "customDefenseHud",
@@ -161,7 +183,7 @@ object ActionbarParser : Feature(
                 else super.shouldShow()
 
             override fun modifyStringHud(str: String): String
-                = str.replace("\uE008", "❈").dropLast(" Defense".length)
+                = str.replace("\uE008", "❈")
         },
         Mana(
             null,
