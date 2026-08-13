@@ -336,12 +336,25 @@ object Dungeons {
 
         EventBus.on<ChatChannelEvent.PartyChatEvent> { event ->
             when (event.userMessage) {
+                "Mimic Killed",
                 "Mimic Killed!",
+                "Mimic Dead",
+                "Mimic Dead!",
                 "\$SKYTILS-DUNGEON-SCORE-MIMIC$"
                     -> mimicKilled.value = true
 
-                "Prince Killed!"
+                "Prince Killed",
+                "Prince Killed!",
+                "Prince Dead",
+                "Prince Dead!"
                     -> princeKilled.value = true
+
+                "BatScore Killed!",
+                "Bat Score Killed!",
+                "Bat Score Killed",
+                "Bat Killed!",
+                "Bat Killed"
+                    -> batScoreKilled.value = true
             }
         }.setEnabled(Location.stateInArea("catacombs"))
 
@@ -363,6 +376,7 @@ object Dungeons {
 
             if (event.message == "A Bat has been slain. +1 Bonus Score") {
                 batScoreKilled.value = true
+                DungeonEvent.BatScoreKilled().post()
                 return@on
             }
 
